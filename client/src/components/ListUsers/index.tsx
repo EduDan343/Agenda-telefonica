@@ -29,7 +29,9 @@ export const ListUsers = () => {
     name: string;
     lastName: string;
     email: string;
-    phone: string;
+    phone: number;
+    date: string;
+    notes: string;
   };
 
   const [userData, setUserData] = useState<User[]>([]);
@@ -99,6 +101,18 @@ export const ListUsers = () => {
       {
         accessorKey: "phone", //simple recommended way to define a column
         header: "Phone",
+        muiTableHeadCellProps: { sx: { color: "#0266a2" } }, //custom props
+        Cell: ({ renderedCellValue }) => <strong>{renderedCellValue}</strong>, //optional custom cell render
+      },
+      {
+        accessorKey: "date", //simple recommended way to define a column
+        header: "Date",
+        muiTableHeadCellProps: { sx: { color: "#0266a2" } }, //custom props
+        Cell: ({ renderedCellValue }) => <strong>{renderedCellValue}</strong>, //optional custom cell render
+      },
+      {
+        accessorKey: "notes", //simple recommended way to define a column
+        header: "Notes",
         muiTableHeadCellProps: { sx: { color: "#0266a2" } }, //custom props
         Cell: ({ renderedCellValue }) => <strong>{renderedCellValue}</strong>, //optional custom cell render
       },
