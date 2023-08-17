@@ -15,7 +15,9 @@ type User = {
   name: string;
   lastName: string;
   email: string;
-  phone: string;
+  phone: number;
+  date: string;
+  notes: string;
 };
 
 interface CreateModalProps {
@@ -103,16 +105,31 @@ export const CreateNewAccountModal = ({
               gap: "1.5rem",
             }}
           >
-            {columns.map((column) => (
-              <TextField
-                key={column.accessorKey}
-                label={column.header}
-                name={column.accessorKey}
-                onChange={(e) =>
-                  setValues({ ...values, [e.target.name]: e.target.value })
-                }
-              />
-            ))}
+            {columns.map((column) => {
+              if (column.accessorKey === "date") {
+                return (
+                  <TextField
+                    key={column.accessorKey}
+                    label={column.header}
+                    placeholder="DD/MM/YEAR"
+                    name={column.accessorKey}
+                    onChange={(e) =>
+                      setValues({ ...values, [e.target.name]: e.target.value })
+                    }
+                  />
+                );
+              }
+              return (
+                <TextField
+                  key={column.accessorKey}
+                  label={column.header}
+                  name={column.accessorKey}
+                  onChange={(e) =>
+                    setValues({ ...values, [e.target.name]: e.target.value })
+                  }
+                />
+              );
+            })}
           </Stack>
         </form>
       </DialogContent>

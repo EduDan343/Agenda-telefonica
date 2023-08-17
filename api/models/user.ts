@@ -30,6 +30,12 @@ class UserClass {
 
     @prop({ required: true })
     public phone!: number;
+
+    @prop({ required: true })
+    public date!: string;
+
+    @prop()
+    public notes!: string;
 }
 
 export default UserClass;

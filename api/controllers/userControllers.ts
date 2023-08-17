@@ -24,8 +24,8 @@ export const getUsers = async (req: Request, res: Response) => {
 };
 
 export const createUser = async (req: Request, res: Response) => {
-  const { name, lastName, email, phone } = req.body;
-  const user:UserClass = { name, lastName, email, phone };
+  const { name, lastName, email, phone, notes, date } = req.body;
+  const user:UserClass = { name, lastName, email, phone, notes, date };
   try {
     const newUser = await createUserService(user);
     res.status(201).json(newUser);
@@ -38,8 +38,8 @@ export const createUser = async (req: Request, res: Response) => {
 export const updateUser = async (req: Request, res: Response) => {
   const { id } = req.params;
   console.log('parametro updateUser :', id)
-  const { name, lastName, email, phone } = req.body;
-  const user:UserClass = { name, lastName, email, phone };
+  const { name, lastName, email, phone, notes, date } = req.body;
+  const user:UserClass = { name, lastName, email, phone , notes , date };
   try {
     const updateUser = await updateUserService(id, user);
     res.json(updateUser);
